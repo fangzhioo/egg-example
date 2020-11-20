@@ -8,8 +8,8 @@
     <ul class="news-view view">
       {% for item in list %}
         <li class="item">
-          {{ item.authorNickname }}
-          {{ item.title }}
+          <span> 【{{ helper.relativeTime(item.gmtCreate) }}】 </span>
+          <span> {{ item.title }} </span>
         </li>
       {% endfor %}
     </ul>
