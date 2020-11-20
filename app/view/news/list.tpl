@@ -8,7 +8,8 @@
     <ul class="news-view view">
       {% for item in list %}
         <li class="item">
-          <a href="{{ item.url }}">{{ item.title }}</a>
+          {{ item.authorNickname }}
+          {{ item.title }}
         </li>
       {% endfor %}
     </ul>
