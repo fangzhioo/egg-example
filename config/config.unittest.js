@@ -1,15 +1,10 @@
 'use strict';
 
-// config/config.local.js
-// only read at development mode, will override default
+// config/config.unittest.js
+// only read at development mode, will override default 单元测试配置文件
 
 module.exports = {
-  myAppName: 'egg-local',
-  robot: {
-    ua: [
-      /Baiduspider/i,
-    ],
-  },
+  myAppName: 'egg-unittest',
   mysql: {
     clients: {
       local: {
