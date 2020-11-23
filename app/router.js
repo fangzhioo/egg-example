@@ -33,4 +33,5 @@ module.exports = app => {
   router.get('/news', controller.news.list);
   // https://eggjs.org/zh-cn/basics/router.html#router-%E8%AF%A6%E7%BB%86%E5%AE%9A%E4%B9%89%E8%AF%B4%E6%98%8E
   router.get('/user/:id', controller.user.info);
+  router.resources('posts', '/api/posts', controller.posts);
 };
