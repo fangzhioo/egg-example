@@ -26,6 +26,7 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [
     'robot', // add middleware robot
+    'gzip', // add middleware
   ];
 
   // add your user config here
@@ -35,11 +36,21 @@ module.exports = appInfo => {
       pageSize: 5,
       serverUrl: 'https://mock.startdt.net/mock/356/myvue/api',
     },
+    // 配置 防爬虫 配置
     robot: {
       ua: [
         /curl/i,
         /Baiduspider/i,
       ],
+    },
+    // 配置 gzip 中间件的配置 match 和 ignore
+    gzip: {
+      threshold: 1024, // 小于 1k 的响应体不压缩
+      match(ctx) {
+        // 只有 ios 设备才开启
+        const reg = /iphone|ipad|ipod/i;
+        return reg.test(ctx.get('user-agent'));
+      },
     },
   };
 
