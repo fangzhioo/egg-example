@@ -32,13 +32,6 @@ module.exports = app => {
   router.get('/home', controller.home.index);
   router.get('/news', controller.news.list);
 
-  // https://eggjs.org/zh-cn/basics/router.html#router-%E8%AF%A6%E7%BB%86%E5%AE%9A%E4%B9%89%E8%AF%B4%E6%98%8E
-  router.get('/user/:id', controller.user.info);
-  router.post('/user', controller.user.create);
-
-  // RESTful风格
-  router.resources('posts', '/api/posts', controller.posts);
-
   // 内部重定向
   router.redirect('/', '/home', 302);
 
@@ -47,4 +40,7 @@ module.exports = app => {
 
   // 中间件的使用
   router.get('/search-middleware', app.middleware.uppercase(), controller.user.search);
+
+  require('./user')(app);
+  require('./posts')(app);
 };
