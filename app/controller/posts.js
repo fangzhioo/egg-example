@@ -1,6 +1,5 @@
 'use strict';
-const { Controller } = require('egg');
-
+const Controller = require('../core/base_controller');
 /**
  *  RESTful 风格的 URL 定义:
  *    方法      路径           路由名称      路由Action
@@ -30,24 +29,52 @@ class PostsController extends Controller {
 
   async show() {
     const { ctx } = this;
-    ctx.body = `app.controllers.posts.show [${ctx.params.id}]`;
+    // query参数 （queries、query、querystring）和 path参数（params）
+    const { queries, query, querystring } = ctx;
+    ctx.body = {
+      title: `app.controllers.posts.show [${ctx.params.id}]`,
+      queries,
+      query,
+      querystring,
+    };
   }
 
   async edit() {
-    const { ctx } = this;
-    ctx.body = `app.controllers.posts.edit [${ctx.params.id}]`;
+    this.success(`app.controllers.posts.edit [${this.ctx.params.id}]`);
   }
 
   async create() {
-    const { ctx } = this;
+    const { ctx, service } = this;
+    // const createRule = {
+    //   title: { type: 'string' },
+    //   content: { type: 'string' },
+    // };
+    // 校验参数
+    // ctx.validate(createRule);
+    // 组装参数
+    const req = Object.assign(ctx.request.body, { ...this.user });
+    // 调用 Service 进行业务处理
+    const res = await service.posts.create(req);
+    // 设置响应内容和响应状态码
+    if (res) {
+      this.success(res);
+    } else {
+      this.fail('新建失败！');
+    }
+
     // 模拟发起 post 请求。
     // curl -X POST http://127.0.0.1:7001/api/posts --data '{"name":"controller"}' --header 'Content-Type:application/json'
-    ctx.body = `app.controllers.posts.create [${JSON.stringify(ctx.request.body)}]`;
+    // ctx.body = `app.controllers.posts.create [${JSON.stringify(ctx.request.body)}]`;
   }
 
   async update() {
     const { ctx } = this;
-    ctx.body = `app.controllers.posts.update [${ctx.params.id}]`;
+    // 组装参数
+    const req = Object.assign({ id: ctx.params.id }, ctx.request.body, { ...this.user });
+
+    const result = await this.service.posts.updateSelected(req);
+
+    this.success(result);
   }
 
   async destroy() {

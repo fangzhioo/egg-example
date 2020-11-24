@@ -10,6 +10,14 @@ module.exports = {
       /Baiduspider/i,
     ],
   },
+  security: {
+    xframe: {
+      enable: false,
+    },
+    csrf: {
+      enable: false,
+    },
+  },
   mysql: {
     clients: {
       local: {

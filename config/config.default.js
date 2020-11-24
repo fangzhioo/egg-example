@@ -23,6 +23,12 @@ module.exports = appInfo => {
     },
   };
 
+  // 配置bodyParser的默认参数 变更解析时允许的最大长度
+  config.bodyParser = {
+    jsonLimit: '1mb',
+    formLimit: '1mb',
+  };
+
   // add your middleware config here
   config.middleware = [
     'robot', // add middleware robot
