@@ -25,6 +25,10 @@ class HomeController extends Controller {
     // 需要注意的是，获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
     ctx.response.body = 'hi, egg';
   }
+
+  async file() {
+    await this.ctx.render('file/index.tpl', {});
+  }
 }
 
 module.exports = HomeController;

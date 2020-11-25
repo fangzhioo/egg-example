@@ -29,6 +29,11 @@ module.exports = appInfo => {
     formLimit: '1mb',
   };
 
+  // 配置获取上传文件
+  config.multipart = {
+    mode: 'file', // 1.File模式 2.Stream 模式
+  };
+
   // add your middleware config here
   config.middleware = [
     'robot', // add middleware robot
