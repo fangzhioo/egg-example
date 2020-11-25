@@ -21,12 +21,28 @@
     </div>
 
     <div>
-      <h1>Stream 模式</h1>
+      <h1>Stream 模式 - 单文件</h1>
       <div>
         <form method="POST" action="/upload_stream" enctype="multipart/form-data">
           title: <input name="title" />
           <div>
             file: <input name="file" type="file" />
+          </div>
+          <button type="submit">Upload</button>
+        </form>
+      </div>
+    </div>
+
+     <div>
+      <h1>Stream 模式 - 多文件</h1>
+      <div>
+        <form method="POST" action="/upload_multstream" enctype="multipart/form-data">
+          title: <input name="title" />
+          <div>
+            file1: <input name="file1" type="file" />
+          </div>
+          <div>
+            file2: <input name="file2" type="file" />
           </div>
           <button type="submit">Upload</button>
         </form>

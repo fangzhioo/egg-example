@@ -6,4 +6,5 @@ module.exports = app => {
   router.post('/upload_file', controller.upload.uploadFile);
   // Stream模式
   router.post('/upload_stream', controller.upload.uploadStream);
+  router.post('/upload_multstream', controller.upload.uploadMultStream);
 };

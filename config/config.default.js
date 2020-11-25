@@ -31,7 +31,9 @@ module.exports = appInfo => {
 
   // 配置获取上传文件
   config.multipart = {
-    mode: 'file', // 1.File模式 2.Stream 模式
+    mode: 'stream', // 1.File模式 2.Stream 模式
+    fileExtensions: [ '.apk' ], // 增加对 apk 扩展名的文件支持
+    // whitelist: [ '.png' ], // 覆盖整个白名单，只允许上传 '.png' 格式 当重写了 whitelist 时，fileExtensions 不生效。
   };
 
   // add your middleware config here
