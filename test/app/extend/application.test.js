@@ -18,4 +18,11 @@ describe('test/app/extend/application.test.js', () => {
     console.log(info);
     assert(info);
   });
+
+  it('application-unittest test mockxx', () => {
+    // 创建上下文
+    const info = app.mockXX();
+    console.log(info);
+    assert(info);
+  });
 });
