@@ -31,6 +31,7 @@ module.exports = app => {
   const { router, controller } = app;
   router.get('/home', controller.home.index);
   router.get('/file', controller.home.file);
+  router.get('/header', controller.home.header);
 
   router.get('/news', controller.news.list);
 

@@ -29,6 +29,17 @@ class HomeController extends Controller {
   async file() {
     await this.ctx.render('file/index.tpl', {});
   }
+
+  async header() {
+    const { ctx } = this;
+    ctx.response.body = {
+      header: ctx.headers,
+      host: ctx.host,
+      protocol: ctx.protocol,
+      ips: ctx.ips,
+      ip: ctx.ip,
+    };
+  }
 }
 
 module.exports = HomeController;
