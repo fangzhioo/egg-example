@@ -8,6 +8,11 @@ class PostsService extends Service {
     this.mysqlClient = this.app.mysql.get('local');
   }
 
+  async read(id) {
+    const posts = await this.mysqlClient.get('posts', { id });
+    return posts;
+  }
+
   async list(payload) {
     const { size, page } = payload;
     const limit = size ? Number(size) : 4;

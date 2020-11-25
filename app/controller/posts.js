@@ -32,17 +32,22 @@ class PostsController extends Controller {
   async show() {
     const { ctx } = this;
     // query参数 （queries、query、querystring）和 path参数（params）
-    const { queries, query, querystring } = ctx;
-    ctx.body = {
-      title: `app.controllers.posts.show [${ctx.params.id}]`,
-      queries,
-      query,
-      querystring,
-    };
+    const start = Date.now();
+    ctx.body = await ctx.service.posts.read(this.ctx.params.id);
+    const used = Date.now() - start;
+    // 设置一个响应头
+    ctx.set('show-response-time', used.toString());
   }
 
   async edit() {
-    this.success(`app.controllers.posts.edit [${this.ctx.params.id}]`);
+    // query参数 （queries、query、querystring）和 path参数（params）
+    const { queries, query, querystring } = this.ctx;
+    this.success({
+      title: `app.controllers.posts.edit [${this.ctx.params.id}]`,
+      queries,
+      query,
+      querystring,
+    });
   }
 
   async create() {
