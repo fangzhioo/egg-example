@@ -47,12 +47,23 @@ class PostsController extends Controller {
 
   async create() {
     const { ctx, service } = this;
-    // const createRule = {
-    //   title: { type: 'string' },
-    //   content: { type: 'string' },
-    // };
-    // 校验参数
-    // ctx.validate(createRule);
+
+    try {
+      // 规则参考 https://github.com/node-modules/parameter#rule
+      const createRule = {
+        title: { type: 'string' },
+        content: { type: 'json' }, // 字段必须是 json 字符串
+      };
+      // 校验参数 如果不传第二个参数会自动校验 `ctx.request.body`
+      ctx.validate(createRule);
+    } catch (error) {
+      // 当校验异常时，会直接抛出一个异常，异常的状态码为 422，errors 字段包含了详细的验证不通过信息。
+      // 如果想要自己处理检查的异常，可以通过 try catch 来自行捕获。
+      ctx.logger.warn(error.errors);
+      this.fail(error.errors || '参数校验失败');
+      return;
+    }
+
     // 组装参数
     const req = Object.assign(ctx.request.body, { ...this.user });
     // 调用 Service 进行业务处理

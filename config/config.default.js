@@ -36,6 +36,12 @@ module.exports = appInfo => {
     // whitelist: [ '.png' ], // 覆盖整个白名单，只允许上传 '.png' 格式 当重写了 whitelist 时，fileExtensions 不生效。
   };
 
+  // cookies配置
+  config.cookies = {
+    // httpOnly: true | false,
+    // sameSite: 'none|lax|strict',
+  };
+
   // add your middleware config here
   config.middleware = [
     'robot', // add middleware robot
