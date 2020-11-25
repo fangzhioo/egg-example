@@ -19,7 +19,9 @@ class PostsController extends Controller {
 
   async index() {
     const { ctx } = this;
-    ctx.body = `app.controllers.posts.index [${ctx.request.query.page}] [${ctx.request.query.size}]`;
+    const { page, size } = ctx.request.query;
+    const result = await ctx.service.posts.list({ size, page });
+    this.success(result);
   }
 
   async new() {
