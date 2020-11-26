@@ -1,15 +1,19 @@
 'use strict';
 
-const { app,
-  // assert,
+const { app, assert,
   // mock,
 } = require('egg-mock/bootstrap');
 
 describe('test/app/extend/response.test.js', () => {
-  it('response test foo', () => {
-    // 创建上下文
-    const context = app.mockContext({});
-    context.response.foo = 'this is a token';
-    context.get('x-response-foo');
+  it('should isSuccess true', () => {
+    const ctx = app.mockContext();
+    ctx.status = 200;
+    assert(ctx.response.isSuccess === true);
+  });
+
+  it('should isSuccess false', () => {
+    const ctx = app.mockContext();
+    ctx.status = 404;
+    assert(ctx.response.isSuccess === false);
   });
 });

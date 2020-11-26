@@ -24,8 +24,8 @@ class UpdateCache extends Subscription {
   // 1 分钟间隔 定时任务可以指定 interval 或者 cron 两种不同的定时方式。
   static get schedule() {
     return {
-      interval: '1m', // 1 分钟间隔
-      // cron: '0 0 */3 * * *', // 每三小时准点执行一次
+      // interval: '1m', // 1 分钟间隔
+      cron: '0 0 */1 * * *', // 每一小时准点执行一次
       type: 'all', // 指定所有的 worker 都需要执行
     };
   }
