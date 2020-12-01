@@ -109,9 +109,16 @@ class AppBootHook {
     // handle socket timeout
     // });
 
+    // 【通过 app 使用 HttpClient】
+    // 示例：启动的时候去读取 https://registry.npm.taobao.org/egg/latest 的版本信息
+    // const result = await this.app.curl('https://registry.npm.taobao.org/egg/latest', {
+    //   dataType: 'json',
+    // });
+    // this.app.logger.info('Egg latest version: %s', result.data.version);
+
     console.log(`
       |-----------------------|\n
-      |      应用启动完成       |\n
+      |       应用启动完成      |\n
       |-----------------------|\n
     `);
   }
