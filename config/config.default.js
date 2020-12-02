@@ -15,6 +15,11 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1605844228996_652';
 
+  // 国际化设置
+  config.i18n = {
+    defaultLocale: 'zh-CN',
+  };
+
   // 模板渲染配置
   config.view = {
     defaultViewEngine: 'nunjucks',

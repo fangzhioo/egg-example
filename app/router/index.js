@@ -33,11 +33,14 @@ module.exports = app => {
   router.get('/file', controller.home.file);
   router.get('/header', controller.home.header);
 
+  router.get('/news', controller.news.list);
+
+  // i18n
+  router.get('/i18n/hello', controller.i18n.hello);
+
   // cookies
   router.get('/cookies/set', controller.cookies.add);
   router.get('/cookies/remove', controller.cookies.remove);
-
-  router.get('/news', controller.news.list);
 
   // 内部重定向
   router.redirect('/', '/home', 302);
