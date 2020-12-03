@@ -1,6 +1,7 @@
 # example
 
-
+这条分支，用来整合 sequelize； 版本v6
+中文参考：https://www.sequelize.com.cn/core-concepts/getting-started
 
 ## QuickStart
 

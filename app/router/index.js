@@ -45,13 +45,5 @@ module.exports = app => {
   // 内部重定向
   router.redirect('/', '/home', 302);
 
-  // 外部重定向
-  router.get('/search-redirect', controller.user.search);
-
-  // 中间件的使用
-  router.get('/search-middleware', app.middleware.uppercase(), controller.user.search);
-
-  require('./user')(app);
-  require('./posts')(app);
   require('./upload')(app);
 };
