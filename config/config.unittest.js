@@ -15,7 +15,7 @@ module.exports = {
         // username
         user: 'root',
         // password
-        password: 'kirito777',
+        password: 'kirito',
         // database
         database: 'test',
       },
