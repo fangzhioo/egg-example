@@ -51,6 +51,8 @@ module.exports = app => {
   // 中间件的使用
   router.get('/search-middleware', app.middleware.uppercase(), controller.user.search);
 
+  router.resources('topics', '/api/v2/topics', app.controller.topics);
+
   require('./user')(app);
   require('./posts')(app);
   require('./upload')(app);

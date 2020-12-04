@@ -94,7 +94,12 @@ module.exports = appInfo => {
   config.middleware = [
     'robot', // add middleware robot
     'gzip', // add middleware
+    'errorHandler', // 全局异常处理
   ];
+
+  config.errorHandler = {
+    match: '/api',
+  };
 
   // add your user config here
   const userConfig = {
