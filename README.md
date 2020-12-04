@@ -5,9 +5,10 @@
 
 ## QuickStart
 
-<!-- add docs here for user -->
+### egg官方对sequelize的整合
 
-see [egg docs][egg] for more detail.
+参考： https://eggjs.org/zh-cn/tutorials/sequelize.html
+
 
 ### Development
 

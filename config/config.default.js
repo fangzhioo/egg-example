@@ -15,6 +15,14 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1605844228996_652';
 
+  // ORM框架
+  // config.sequelize = {
+  //   dialect: 'mysql',
+  //   host: '127.0.0.1',
+  //   port: 3306,
+  //   database: 'egg-sequelize-local',
+  // };
+
   // 国际化设置
   config.i18n = {
     defaultLocale: 'zh-CN',

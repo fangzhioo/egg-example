@@ -46,4 +46,5 @@ module.exports = app => {
   router.redirect('/', '/home', 302);
 
   require('./upload')(app);
+  require('./users')(app);
 };
