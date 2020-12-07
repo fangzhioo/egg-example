@@ -47,4 +47,5 @@ module.exports = app => {
 
   require('./upload')(app);
   require('./users')(app);
+  require('./posts')(app);
 };
