@@ -7,7 +7,9 @@ function toInt(str) {
   if (!str) return str;
   return parseInt(str, 10) || 0;
 }
-
+/**
+ * @Controller user
+ */
 class UserController extends Controller {
   async index() {
     const ctx = this.ctx;
